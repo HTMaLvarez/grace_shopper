@@ -19,5 +19,3 @@ app.get("/", async (req, res, next) => {
     next(ex);
   }
 });
-
-//maria was here
