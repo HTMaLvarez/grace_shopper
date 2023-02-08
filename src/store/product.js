@@ -16,7 +16,7 @@ const _fetchProducts = allProducts => {
 //Thunks
 const fetchProducts = () => {
   return async dispatch => {
-    const allProducts = await axios.get('/api/products');
+    const allProducts = (await axios.get('/api/products')).data;
     dispatch(_fetchProducts(allProducts));
   };
 };
