@@ -1,19 +1,31 @@
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { logout } from '../store';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { logout, updateCart } from "../store";
+import { Link } from "react-router-dom";
 
-const Cart = ()=> {
-  const { cart } = useSelector(state => state);
+const Cart = () => {
+  const { cart } = useSelector((state) => state);
+  console.log("this is dougs cart", cart.lineItems);
   const dispatch = useDispatch();
+
   return (
     <div>
       <h1>Cart</h1>
-      <pre>
-        {
-          JSON.stringify(cart, null, 2)
-        }
-      </pre>
+      <div>
+        {cart.lineItems.map((item) => (
+          <div key={item.id}>
+            <p>{item.product.name}</p>
+            <p>Quantity: {item.quantity} </p>
+            <button
+              onClick={() =>
+                dispatch(updateCart(item.product.id, item.quantity))
+              }
+            >
+              Remove Item
+            </button>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
