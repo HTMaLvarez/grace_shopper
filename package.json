@@ -6,20 +6,28 @@
   "scripts": {
     "build": "webpack",
     "build:dev": "npm run build -- --watch --mode=development",
-    "test": "JWT=shhhhh mocha",
+    "test": "JWT=mahomes",
     "test:dev": "DATABASE_URL=postgres://localhost/acme_shopping_test_db npm run test -- --watch",
     "test:dev:quiet": "QUIET=true npm run test:dev",
-    "start:dev": "JWT=felix nodemon server/index.js --ignore dist/ --ignore src/ & npm run build:dev"
+    "start:dev": "JWT=mahomes nodemon server/index.js --ignore dist/ --ignore src/ & npm run build:dev"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.3.0",
+    "@fortawesome/free-solid-svg-icons": "^6.3.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "bcrypt": "^5.1.0",
+    "bootstrap": "^5.2.3",
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "jsonwebtoken": "^8.5.1",
     "pg": "^8.8.0",
-    "sequelize": "^6.25.3"
+    "react-bootstrap": "^2.7.0",
+    "react-fontawesome": "^1.7.1",
+    "sequelize": "^6.25.3",
+    "stripe": "^11.9.1"
   },
   "devDependencies": {
     "@babel/core": "^7.19.6",
