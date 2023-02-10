@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import Home from './Home';
 import Login from './Login';
 import Cart from './Cart';
+
 import { useSelector, useDispatch } from 'react-redux';
 import { loginWithToken, fetchCart } from '../store';
-import { Routes, Route } from 'react-router-dom';
 import SignUp from './SignUp';
 import Nav from './Nav';
 import Header from './Header.js';
@@ -13,6 +13,13 @@ import Success from './Success';
 import Cancel from './Cancel';
 import Users from './Users';
 import UserDetails from './UserDetails';
+
+import AllProducts from './AllProducts';
+import ProductCard from './ProductCard';
+import { fetchProducts } from '../store';
+import { Link, Routes, Route } from 'react-router-dom';
+import ProductDetails from './ProductDetails';
+
 
 const App = () => {
   //useSelector is like mapStateToProps, it gets state from store
@@ -32,6 +39,7 @@ const App = () => {
       console.log('success!');
     }
   }, [auth]);
+
   //
   return (
     <>
@@ -49,15 +57,30 @@ const App = () => {
         </Routes>
 
         {/* {auth.id ? <Home /> : <SignUp />}
+
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, []);
+
+  return (
+    <div>
+      <h1>Acme Shopping</h1>
+      <nav>
+        <Link to='/'>Home</Link>
+        <Link to='/products'>Store</Link>
+        <Link to='/cart'>Cart</Link>
+      </nav>
+      {auth.id ? <Home /> : <Login />}
       {!!auth.id && (
         <div>
-          <nav>
-            <Link to="/">Home</Link>
-            <Link to="/cart">Cart</Link>
-          </nav>
           <Routes>
+
             <Route path="/cart" element={<Cart />} />
             <Route path="/sign-in" element={<Login />} />
+            <Route exact path='/products' element={<AllProducts />} />
+            <Route path='/products/:id' element={<ProductDetails />} />
+
           </Routes>
         </div>
       )} */}
