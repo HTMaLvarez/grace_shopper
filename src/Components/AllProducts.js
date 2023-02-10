@@ -1,28 +1,26 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchProducts } from '../store';
+import React from 'react';
+import { useSelector } from 'react-redux';
+import ProductCard from './ProductCard';
 
 const AllProducts = () => {
-  const dispatch = useDispatch();
-  const { product } = useSelector(state => state);
-
-  useEffect(() => {
-    dispatch(fetchProducts());
-  }, [dispatch]);
+  const { products } = useSelector(state => state);
 
   return (
     <div>
       <h1>All Products </h1>
-      {product.map(product => {
-        return (
-          <div key={product.id}>
-            {product.name}
-            <hr />
-          </div>
-        );
-      })}
+      <ul>
+        {products.map(product => {
+          return (
+            <li key={product.id}>
+              <ProductCard product={product} />
+              <hr />
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 };
 
 export default AllProducts;
+//<Link to={`/product/${product.id}`}>{product.name}</Link>

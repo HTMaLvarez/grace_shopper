@@ -23,7 +23,7 @@ const fetchProducts = () => {
 
 //Reducer
 
-const product = (state = [], action) => {
+const products = (state = [], action) => {
   switch (action.type) {
     case FETCH_PRODUCTS:
       return [...action.allProducts];
@@ -33,4 +33,4 @@ const product = (state = [], action) => {
 };
 
 export { fetchProducts };
-export default product;
+export default products;

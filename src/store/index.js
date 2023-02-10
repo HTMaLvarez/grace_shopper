@@ -3,12 +3,14 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import auth from './auth';
 import cart from './cart';
-import product from './product';
+import products from './products';
+import singleProduct from './singleProduct';
 
 const reducer = combineReducers({
   auth,
   cart,
-  product,
+  products,
+  singleProduct,
 });
 
 const store = createStore(reducer, applyMiddleware(thunk, logger));
@@ -17,4 +19,5 @@ export default store;
 
 export * from './auth';
 export * from './cart';
-export * from './product'; //not sure what this does but im following suit. (I.A.)
+export * from './products'; //not sure what this does but im following suit. (I.A.)
+export * from './singleProduct';
