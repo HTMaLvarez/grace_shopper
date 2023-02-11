@@ -1,13 +1,13 @@
-import React from 'react';
-import { Button, Container, Navbar } from 'react-bootstrap';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import Modal from './Modal';
-const { checkout } = require('../stripe');
+import React from "react";
+import { Button, Container, Navbar } from "react-bootstrap";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import Modal from "./Modal";
+const { checkout } = require("../stripe");
 // import { checkout } from '../../stripe';
 
 const Nav = () => {
-  const [isActive, setActive] = useState('true');
+  const [isActive, setActive] = useState("true");
   // const handleClose = () => setActive('false');
   // const handleOpen = () => setActive('true');
   //
@@ -16,10 +16,10 @@ const Nav = () => {
   };
 
   const checkout = () => {
-    fetch('/create-checkout-session', {
-      method: 'POST',
+    fetch("/create-checkout-session", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         items: [
@@ -28,15 +28,15 @@ const Nav = () => {
         ],
       }),
     })
-      .then(res => {
+      .then((res) => {
         if (res.ok) return res.json();
-        return res.json().then(json => Promise.reject(json));
+        return res.json().then((json) => Promise.reject(json));
       })
       .then(({ url }) => {
         // console.log(url);
         window.location = url;
       })
-      .catch(e => {
+      .catch((e) => {
         console.error(e.rror);
       });
   };
@@ -56,11 +56,17 @@ const Nav = () => {
           <li>
             <Link to="/sign-up">Sign Up</Link>
           </li>
+          <li>
+            <Link to="/cart">Cart</Link>
+          </li>
+          <li>
+            <Link to="/products">Products</Link>
+          </li>
         </ul>
       </div>
       <div className="NavRight">
         <button onClick={toggleActive}>CART</button>
-        <div className={isActive ? 'Off' : 'On'}>
+        <div className={isActive ? "Off" : "On"}>
           <div className="ModalContainer">
             <div className="ModalHeader">
               <button className="Close" onClick={toggleActive}>
