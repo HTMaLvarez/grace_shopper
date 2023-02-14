@@ -62,6 +62,9 @@ const Nav = () => {
           <li>
             <Link to="/products">Products</Link>
           </li>
+          <li>
+            <Link to="/order-history">Order History</Link>
+          </li>
         </ul>
       </div>
       <div className="NavRight">
