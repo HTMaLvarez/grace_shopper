@@ -64,28 +64,6 @@ body {
   background-color: #eee;
   color: #333;
 }
-.On {
-  background-color: rgb(211, 211, 211);
-  border-radius: 0.25rem;
-  box-shadow: 2px 3px #b0b0b0;
-  padding: 7px;
-  color: rgb(84, 84, 84);
-}
-.Off {
-  display: none;
-}
-.ModalContainer {
-  display: flex;
-  flex-direction: column;
-  /* padding: 5px; */
-}
-.ModalBody {
-  padding: 5px;
-}
-.ModalFooter {
-  padding: 5px;
-  margin-top: 10px;
-}
 
 .Close {
   background-color: rgb(105, 105, 105);
@@ -136,4 +114,144 @@ body {
   padding: 5px;
   margin-top: 20px;
   width: 40%;
+}
+/*-------------------------PRODUCTS--------------------------------*/
+
+.AllProducts {
+  border-radius: 0.25rem;
+  box-shadow: 3px 5px 10px #878787;
+  padding: 10px;
+  width: 60%;
+}
+
+.ProductCards ul {
+  list-style: none;
+  margin-top: 10px;
+}
+
+.ProductsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.Item {
+  width: 32%;
+  padding-bottom: 32%;
+  margin-bottom: 2%;
+  position: relative;
+}
+.ProductCards li {
+  border-left: 5pt solid orangered;
+  box-shadow: 3px 2px 5px #878787;
+  border-radius: 0.25rem;
+  padding: 7px;
+  color: white;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.ProductCards li a {
+  color: rgb(120, 120, 120);
+  text-decoration: none;
+}
+
+.Details {
+  border-radius: 0.25rem;
+  box-shadow: 3px 5px 10px #878787;
+  padding: 10px;
+  width: 50%;
+}
+.GameName {
+  border-left: 5pt solid orangered;
+  background-color: rgb(95, 95, 95);
+  border-radius: 0.25rem;
+  padding: 7px;
+  color: white;
+  width: 100%;
+}
+
+.Form {
+  /* display: flex;
+  flex-direction: column; */
+  align-items: left;
+  padding: 10px;
+  border-radius: 0.25rem;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+form input {
+  /* width: 30px; */
+  margin-bottom: 7px;
+}
+
+form button {
+  padding: 2px 12px;
+  background-color: rgb(135, 135, 135);
+  border: 1px solid #ddd;
+  border-radius: 0.25rem;
+  color: white;
+}
+
+form button:hover {
+  background-color: royalblue;
+}
+
+.AddToCart button {
+  background-color: orangered;
+}
+
+.Button {
+  background-color: orangered;
+}
+
+/*-------------------------CART/Modal--------------------------------*/
+
+.Cart {
+  border-radius: 0.25rem;
+  box-shadow: 3px 5px 10px #878787;
+  padding: 10px;
+  width: 100%;
+}
+
+.LineItems {
+  margin-top: 10px;
+}
+
+.Item {
+  border-left: 5pt solid orangered;
+  box-shadow: 3px 2px 5px #878787;
+  border-radius: 0.25rem;
+  line-height: 1.5;
+  padding: 7px;
+  color: rgb(73, 73, 73);
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.Item button {
+  margin-top: 10px;
+  padding: 4px;
+  background-color: orange;
+  border-radius: 0.25rem;
+  border: none;
+}
+
+.On {
+  position: absolute;
+  top: 25%;
+  right: 2.5%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(255, 255, 255);
+  border-radius: 0.25rem;
+  padding: 7px;
+  color: rgb(165, 165, 165);
+}
+.Off {
+  display: none;
+}
+.ModalFooter {
+  padding: 5px;
+  margin-top: 10px;
 }

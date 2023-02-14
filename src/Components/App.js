@@ -1,30 +1,30 @@
-import React, { useEffect } from "react";
-import Home from "./Home";
-import Login from "./Login";
-import Cart from "./Cart";
+import React, { useEffect } from 'react';
+import Home from './Home';
+import Login from './Login';
+import Cart from './Cart';
 
-import { useSelector, useDispatch } from "react-redux";
-import { loginWithToken, fetchCart } from "../store";
-import SignUp from "./SignUp";
-import Nav from "./Nav";
-import Header from "./Header.js";
-import Footer from "./Footer";
-import Success from "./Success";
-import Cancel from "./Cancel";
-import Users from "./Users";
-import UserDetails from "./UserDetails";
-import PastOrders from "./PastOrders";
+import { useSelector, useDispatch } from 'react-redux';
+import { loginWithToken, fetchCart } from '../store';
+import SignUp from './SignUp';
+import Nav from './Nav';
+import Header from './Header.js';
+import Footer from './Footer';
+import Success from './Success';
+import Cancel from './Cancel';
+import Users from './Users';
+import UserDetails from './UserDetails';
+import PastOrders from './PastOrders';
 
-import AllProducts from "./AllProducts";
-import ProductCard from "./ProductCard";
-import { fetchProducts } from "../store";
-import { Link, Routes, Route } from "react-router-dom";
-import ProductDetails from "./ProductDetails";
-import WishList from "./WishList";
+import AllProducts from './AllProducts';
+import ProductCard from './ProductCard';
+import { fetchProducts } from '../store';
+import { Link, Routes, Route } from 'react-router-dom';
+import ProductDetails from './ProductDetails';
+import WishList from './WishList';
 
 const App = () => {
   //useSelector is like mapStateToProps, it gets state from store
-  const { auth } = useSelector((state) => state);
+  const { auth } = useSelector(state => state);
 
   //useDispatch refrences the thunk (or dispatch function) from store
   const dispatch = useDispatch();
@@ -39,7 +39,7 @@ const App = () => {
   useEffect(() => {
     if (auth.id) {
       dispatch(fetchCart());
-      console.log("success!");
+      console.log('success!');
     }
   }, [auth]);
 
@@ -55,7 +55,8 @@ const App = () => {
       {!!auth.id && (
         <div className="App">
           <Routes>
-            <Route exact path="/" element={<Home />} />
+            {/* <Route exact path="/" element={<Home />} /> */}
+            <Route exact path="/home" element={<Home />} />
             <Route exact path="/users" element={<Users />} />
             <Route exact path="/sign-up" element={<SignUp />} />
             <Route exact path="/sign-in" element={<Login />} />
@@ -70,7 +71,6 @@ const App = () => {
           </Routes>
         </div>
       )}
-
       <Footer />
     </>
   );

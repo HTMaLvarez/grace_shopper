@@ -1,11 +1,10 @@
-const express = require("express");
+const express = require('express');
 const app = express.Router();
-const { User } = require("../db");
-const Order = require("../db/Order");
+const { User, Order } = require('../db');
 
 module.exports = app;
 
-app.post("/", async (req, res, next) => {
+app.post('/', async (req, res, next) => {
   try {
     const user = await User.findByToken(req.headers.authorization);
     res.send(await user.createOrder(req.body));
@@ -14,16 +13,7 @@ app.post("/", async (req, res, next) => {
   }
 });
 
-app.get("/", async (req, res, next) => {
-  try {
-    const orders = await Order.findAll();
-    res.send(orders);
-  } catch (ex) {
-    next(ex);
-  }
-});
-
-app.get("/cart", async (req, res, next) => {
+app.get('/cart', async (req, res, next) => {
   try {
     const user = await User.findByToken(req.headers.authorization);
     res.send(await user.getCart());
@@ -32,7 +22,7 @@ app.get("/cart", async (req, res, next) => {
   }
 });
 
-app.post("/cart", async (req, res, next) => {
+app.post('/cart', async (req, res, next) => {
   try {
     const user = await User.findByToken(req.headers.authorization);
     res.send(await user.addToCart(req.body));
@@ -41,7 +31,7 @@ app.post("/cart", async (req, res, next) => {
   }
 });
 
-app.put("/cart", async (req, res, next) => {
+app.put('/cart', async (req, res, next) => {
   try {
     const user = await User.findByToken(req.headers.authorization);
     await user.update(req.body);
