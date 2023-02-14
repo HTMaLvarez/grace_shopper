@@ -1,11 +1,11 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { logout, updateCart } from "../store";
+import { createNewOrder, logout, updateCart } from "../store";
 import { Link } from "react-router-dom";
 
 const Cart = () => {
   const { cart } = useSelector((state) => state);
-  console.log("this is dougs cart", cart.lineItems);
+  console.log("this is dougs cart", cart);
   const dispatch = useDispatch();
 
   return (
@@ -26,6 +26,9 @@ const Cart = () => {
           </div>
         ))}
       </div>
+      <button onClick={() => dispatch(createNewOrder(cart))}>
+        Create Order
+      </button>
     </div>
   );
 };

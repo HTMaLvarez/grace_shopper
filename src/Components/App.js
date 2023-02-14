@@ -13,6 +13,7 @@ import Success from "./Success";
 import Cancel from "./Cancel";
 import Users from "./Users";
 import UserDetails from "./UserDetails";
+import PastOrders from "./PastOrders";
 
 import AllProducts from "./AllProducts";
 import ProductCard from "./ProductCard";
@@ -63,6 +64,7 @@ const App = () => {
             <Route exact path="/products" element={<AllProducts />} />
             <Route path="/products/:id" element={<ProductDetails />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/order-history" element={<PastOrders />} />
           </Routes>
         </div>
       )}
