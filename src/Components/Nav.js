@@ -64,6 +64,9 @@ const Nav = () => {
           <li>
             <Link to="/order-history">Order History</Link>
           </li>
+          <li>
+            <Link to="/wish-list">Wish List</Link>
+          </li>
         </ul>
       </div>
       <div className="NavRight">

@@ -7,6 +7,7 @@ import user from "./user";
 import products from "./products";
 import singleProduct from "./singleProduct";
 import order from "./order";
+import wishList from "./wishList";
 
 const reducer = combineReducers({
   auth,
@@ -15,6 +16,7 @@ const reducer = combineReducers({
   products,
   singleProduct,
   order,
+  wishList,
 });
 
 const store = createStore(reducer, applyMiddleware(thunk, logger));
@@ -27,3 +29,4 @@ export * from "./user";
 export * from "./products"; //not sure what this does but im following suit. (I.A.)
 export * from "./singleProduct";
 export * from "./order";
+export * from "./wishList";

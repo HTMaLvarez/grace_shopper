@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchSingleProduct, addToCart } from "../store";
+import { fetchSingleProduct, addToCart, addToWishList } from "../store";
 import { useParams } from "react-router-dom"; //turns out this is "props.match.params"
 
 const ProductDetails = () => {
@@ -14,6 +14,13 @@ const ProductDetails = () => {
   return (
     <div>
       <h1>Product Details Page</h1>
+      <button
+        onClick={() => {
+          dispatch(addToWishList(singleProduct));
+        }}
+      >
+        Add To Wish List
+      </button>
       <h2>{singleProduct.name}</h2>
       <button
         onClick={() => {
