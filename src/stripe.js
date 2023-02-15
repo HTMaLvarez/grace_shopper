@@ -1,8 +1,8 @@
 const checkout = () => {
-  fetch('/create-checkout-session', {
-    method: 'POST',
+  fetch("/create-checkout-session", {
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     body: JSON.stringify({
       items: [
@@ -11,15 +11,14 @@ const checkout = () => {
       ],
     }),
   })
-    .then(res => {
+    .then((res) => {
       if (res.ok) return res.json();
-      return res.json().then(json => Promise.reject(json));
+      return res.json().then((json) => Promise.reject(json));
     })
     .then(({ url }) => {
-      // console.log(url);
       window.location = url;
     })
-    .catch(e => {
+    .catch((e) => {
       console.error(e.rror);
     });
 };

@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 
 const Cart = () => {
   const { cart } = useSelector((state) => state);
-  console.log("this is dougs cart", cart);
   const dispatch = useDispatch();
 
   return (

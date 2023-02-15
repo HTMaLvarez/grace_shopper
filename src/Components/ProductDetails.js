@@ -5,7 +5,6 @@ import { useParams } from "react-router-dom"; //turns out this is "props.match.p
 
 const ProductDetails = () => {
   const { singleProduct } = useSelector((state) => state);
-  console.log("this is single product", singleProduct);
   const { id } = useParams(); //turns out this is "props.match.params"
   const dispatch = useDispatch();
   useEffect(() => {
