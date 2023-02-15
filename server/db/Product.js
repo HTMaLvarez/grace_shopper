@@ -6,6 +6,7 @@ const Product = conn.define('product', {
   id: {
     type: STRING,
     primaryKey: true,
+    defaultValue: UUIDV4,
   },
   name: {
     type: STRING,

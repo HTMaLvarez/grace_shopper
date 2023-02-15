@@ -3,11 +3,16 @@ const User = require('./User');
 const Product = require('./Product');
 const Order = require('./Order');
 const LineItem = require('./LineItem');
+const ProductReview = require('./ProductReview');
 
 Order.belongsTo(User);
 LineItem.belongsTo(Order);
 Order.hasMany(LineItem);
 LineItem.belongsTo(Product);
+ProductReview.belongsTo(Product);
+ProductReview.belongsTo(User);
+Product.hasMany(ProductReview);
+User.hasMany(ProductReview);
 
 const syncAndSeed = async () => {
   await conn.sync({ force: true });
@@ -22,6 +27,12 @@ const syncAndSeed = async () => {
     streetFighter2,
     residentEvil,
     doug,
+    sonic,
+    mario,
+    donkey,
+    scottsReview,
+    mariasReview,
+    irwingsReview,
   ] = await Promise.all([
     User.create({
       username: 'Maria',
@@ -91,17 +102,37 @@ const syncAndSeed = async () => {
       description:
         'Resident Evil 2 is a 1998 survival horror video game developed and published by Capcom for the PlayStation. The player controls Leon S. Kennedy and Claire Redfield, who must escape Raccoon City after its citizens are transformed into zombies by a biological weapon two months after the events of the original Resident Evil.',
     }),
-    // Product.create({ name: 'Sonic The Hedgehog' }),
-    // Product.create({ name: 'Mario Kart' }),
-    // Product.create({ name: 'Donkey Kong Country' }),
-
     User.create({
       username: 'Doug',
       password: '123',
       favoriteGenres: 'sports, fighting',
       userRating: 9.2,
     }),
+
+    User.create({ username: 'Doug', password: '123', userRating: 9.2 }),
+
+    ProductReview.create({
+      review: 'Wow! This game is great!!',
+      rating: 5,
+    }),
+
+    ProductReview.create({
+      review: `This game is terrible. I Think it's a bootleg because i'm pretty sure Mario Cart is spelled with a 'c', not a 'k'.`,
+      rating: 1,
+    }),
+
+    ProductReview.create({
+      review: `mehhh`,
+      rating: 2,
+    }),
   ]);
+
+  scottsReview.setUser(scott);
+  scottsReview.setProduct(sonic);
+  mariasReview.setUser(maria);
+  mariasReview.setProduct(mario);
+  irwingsReview.setUser(irwing);
+  irwingsReview.setProduct(donkey);
 
   const cart = await doug.getCart();
   await doug.addToCart({ product: zelda2, quantity: 3 });
@@ -127,4 +158,5 @@ module.exports = {
   syncAndSeed,
   User,
   Product,
+  ProductReview,
 };

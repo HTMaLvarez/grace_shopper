@@ -39,19 +39,19 @@ const User = conn.define(
   {
     hooks: {
       async beforeCreate(user) {
-        console.log(user);
-        console.log('-----------');
+        // console.log(user);
+        // console.log('-----------');
         const newUser = user.dataValues;
-        console.log(newUser);
+        // console.log(newUser);
         newUser.password = await bcrypt.hash(
           newUser.password,
           8
           // parseInt(process.env.ROUNDS) || 8
         );
-        console.log(
-          await bcrypt.compareSync(user.dataValues.password, newUser.password)
-        );
-        console.log(newUser.password);
+        // console.log(
+        //   await bcrypt.compareSync(user.dataValues.password, newUser.password)
+        // );
+        // console.log(newUser.password);
       },
       async beforeUpdate(user) {
         console.log(user);
