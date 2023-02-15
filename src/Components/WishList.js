@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const WishList = () => {
@@ -11,7 +12,7 @@ const WishList = () => {
         {wishList?.length > 0 ? (
           wishList.map((product) => (
             <div key={product.id}>
-              <p>{product.name}</p>
+              <Link to={`/products/${product.id}`}>{product.name}</Link>
             </div>
           ))
         ) : (
