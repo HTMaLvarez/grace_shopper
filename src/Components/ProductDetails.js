@@ -11,6 +11,7 @@ const ProductDetails = () => {
   // console.log('this is single product', singleProduct);
   const { id } = useParams(); //turns out this is "props.match.params"
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(fetchSingleProduct(id));
   }, []);
@@ -18,6 +19,7 @@ const ProductDetails = () => {
   return (
     <div>
       <h1>Product Details Page</h1>
+
       <button
         onClick={() => {
           dispatch(addToWishList(singleProduct));
@@ -25,7 +27,13 @@ const ProductDetails = () => {
       >
         Add To Wish List
       </button>
+
       <h2>{singleProduct.name}</h2>
+
+      <Link to={`/productReviews/product/${singleProduct.id}`}>
+        <h5>See what others had to say...</h5>
+      </Link>
+
       <button
         onClick={() => {
           dispatch(addToCart(singleProduct, 1));
@@ -33,24 +41,26 @@ const ProductDetails = () => {
       >
         Add To Cart
       </button>
-    <div className="Details">
-      <div className="GameName">
-        <h2>{singleProduct.name}</h2>
-      </div>
 
-      <div className="Form">
-        <form>
-          <input type="text" placeholder={quantity} />
-          <button onClick={() => setQuantity(quantity + 1)}> + </button>
-        </form>
+      <div className='Details'>
+        <div className='GameName'>
+          <h2>{singleProduct.name}</h2>
+        </div>
 
-        <button
-          onClick={() => {
-            dispatch(addToCart(singleProduct, quantity));
-          }}
-        >
-          Add To Cart
-        </button>
+        <div className='Form'>
+          <form>
+            <input type='text' placeholder={quantity} />
+            <button onClick={() => setQuantity(quantity + 1)}> + </button>
+          </form>
+
+          <button
+            onClick={() => {
+              dispatch(addToCart(singleProduct, quantity));
+            }}
+          >
+            Add To Cart
+          </button>
+        </div>
       </div>
     </div>
   );

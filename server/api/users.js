@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express.Router();
-const { User } = require('../db');
+const { User, ProductReview } = require('../db');
 
 module.exports = app;
 
@@ -15,7 +15,9 @@ app.get('/', async (req, res, next) => {
 
 app.get('/:id', async (req, res, next) => {
   try {
-    const user = await User.findByPk(req.params.id);
+    const user = await User.findByPk(req.params.id, {
+      include: [ProductReview],
+    });
     res.json(user);
   } catch (err) {
     next(err);

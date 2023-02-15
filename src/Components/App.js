@@ -14,29 +14,24 @@ import Success from './Orders/Success';
 import Cancel from './Orders/Cancel';
 import Users from './Users/Users';
 import UserDetails from './Users/UserDetails';
+import ProductCard from './ProductCard';
+import ReviewsForProduct from './ReviewsForProduct';
+import WishList from './WishList';
 
 // state and token
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchProducts } from '../store';
-// import { Link, Routes, Route } from 'react-router-dom';
-import WishList from './WishList';
 import { loginWithToken, fetchCart } from '../store';
 
 // browser and routes
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
-// import {
-//   BrowserRouter as Router,
-//   Routes,
-//   Route,
-//   Navigate,
-// } from 'react-router-dom';
 import ProtectedRoutes from './Routes/ProtectedRoutes';
 import PublicRoute from './Routes/PublicRoute';
 import PrivateRoute from './Routes/PrivateRoute';
 import NotFound from './Framework/NotFound';
 
 const App = () => {
-  //useSelector to get our auth state
+  //useSelector is like mapStateToProps, it gets state from store
   const { auth } = useSelector(state => state);
 
   // allow dispatch from store/thunk
@@ -50,6 +45,7 @@ const App = () => {
   useEffect(() => {
     if (auth.id) {
       dispatch(fetchCart());
+      console.log('success!');
     }
   }, [auth]);
   // fetch products on load
@@ -64,44 +60,53 @@ const App = () => {
   return (
     <>
       <Router>
-        <Header title="VIDEO GAMES" />
+        <Header title='VIDEO GAMES' />
         <Nav />
         {auth.id ? (
-          <div className="App">
+          <div className='App'>
             <Routes>
-              <Route exact path="/" element={<Home />} />
-              <Route exact path="/users" element={<Users />} />
-              <Route exact path="/sign-up" element={<SignUp />} />
-              <Route exact path="/sign-in" element={<Login />} />
-              <Route exact path="/users/:id" element={<UserDetails />} />
-              <Route exact path="/success" element={<Success />} />
-              <Route exact path="/cancel" element={<Cancel />} />
-              <Route exact path="/products" element={<AllProducts />} />
-              <Route path="/products/:id" element={<ProductDetails />} />
-              <Route path="/cart" element={<Cart />} />
-              <Route path="/order-history" element={<PastOrders />} />
-              <Route path="/wish-list" element={<WishList />} />
-              <Route path="*" element={<NotFound />} />
+              <Route exact path='/' element={<Home />} />
+              <Route exact path='/users' element={<Users />} />
+              <Route exact path='/sign-up' element={<SignUp />} />
+              <Route exact path='/sign-in' element={<Login />} />
+              <Route exact path='/users/:id' element={<UserDetails />} />
+              <Route exact path='/success' element={<Success />} />
+              <Route exact path='/cancel' element={<Cancel />} />
+              <Route exact path='/products' element={<AllProducts />} />
+              <Route path='/products/:id' element={<ProductDetails />} />
+              <Route path='/cart' element={<Cart />} />
+              <Route path='/order-history' element={<PastOrders />} />
+              <Route path='/wish-list' element={<WishList />} />
+              <Route path='*' element={<NotFound />} />
+              <Route
+                exact
+                path='/productReviews/product/:id'
+                element={<ReviewsForProduct />}
+              />
             </Routes>
           </div>
         ) : (
-          <div className="App">
+          <div className='App'>
             <Routes>
-              <Route exact path="/" element={<Home />} />
-              <Route exact path="/users" element={<Users />} />
-              <Route exact path="/sign-up" element={<SignUp />} />
-              <Route exact path="/sign-in" element={<Login />} />
-              <Route exact path="/users/:id" element={<UserDetails />} />
-              <Route exact path="/success" element={<Success />} />
-              <Route exact path="/cancel" element={<Cancel />} />
-              <Route exact path="/products" element={<AllProducts />} />
-              <Route path="/products/:id" element={<ProductDetails />} />
-              <Route path="/cart" element={<Cart />} />
-              <Route path="/order-history" element={<PastOrders />} />
+              <Route exact path='/' element={<Home />} />
+              <Route exact path='/users' element={<Users />} />
+              <Route exact path='/sign-up' element={<SignUp />} />
+              <Route exact path='/sign-in' element={<Login />} />
+              <Route exact path='/users/:id' element={<UserDetails />} />
+              <Route exact path='/success' element={<Success />} />
+              <Route exact path='/cancel' element={<Cancel />} />
+              <Route exact path='/products' element={<AllProducts />} />
+              <Route path='/products/:id' element={<ProductDetails />} />
+              <Route path='/cart' element={<Cart />} />
+              <Route path='/order-history' element={<PastOrders />} />
+              <Route
+                exact
+                path='/productReviews/product/:id'
+                element={<ReviewsForProduct />}
+              />
             </Routes>
           </div>
         )}
-
         <Footer />
       </Router>
     </>
