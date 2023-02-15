@@ -33,6 +33,8 @@ const syncAndSeed = async () => {
     scottsReview,
     mariasReview,
     irwingsReview,
+    scottsOtherReview,
+    mariasOtherReview,
   ] = await Promise.all([
     User.create({
       username: 'Maria',
@@ -125,14 +127,29 @@ const syncAndSeed = async () => {
       review: `mehhh`,
       rating: 2,
     }),
+    ProductReview.create({
+      review: `I bought this game for the nostalgia. It holds up`,
+      rating: 4,
+    }),
+    ProductReview.create({
+      rating: 3,
+    }),
   ]);
 
   scottsReview.setUser(scott);
   scottsReview.setProduct(sonic);
+
   mariasReview.setUser(maria);
   mariasReview.setProduct(mario);
+
   irwingsReview.setUser(irwing);
   irwingsReview.setProduct(donkey);
+
+  scottsOtherReview.setUser(scott);
+  scottsOtherReview.setProduct(donkey);
+
+  mariasOtherReview.setUser(maria);
+  mariasOtherReview.setProduct(sonic);
 
   const cart = await doug.getCart();
   await doug.addToCart({ product: zelda2, quantity: 3 });
@@ -157,6 +174,8 @@ const syncAndSeed = async () => {
 module.exports = {
   syncAndSeed,
   User,
+  LineItem,
+  Order,
   Product,
   ProductReview,
 };
