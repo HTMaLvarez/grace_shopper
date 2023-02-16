@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRef, useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import Login from './Login';
+import { Link, useParams } from 'react-router-dom';
+import Login from '../Login';
 // import the font awesome shit
 import {
   faCheck,
@@ -10,22 +10,23 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import 'useDispatch
-import { useDispatch } from 'react-redux';
-import { createNewUser } from '../store';
-import Home from './Framework/Home';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { fetchUser, updateUser } from '../../store';
 
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
-const SignUp = () => {
+const UserDetails = props => {
+  // console.log(props.id);
   const userRef = useRef();
   const errRef = useRef();
   const dispatch = useDispatch();
-  // create user state
+  // user input
   const [user, setUser] = useState('');
   const [validName, setValidName] = useState(false);
   const [userFocus, setUserFocus] = useState(false);
-  // create password state
+  // pass input
   const [pwd, setPwd] = useState('');
   const [validPwd, setValidPwd] = useState(false);
   const [pwdFocus, setPwdFocus] = useState(false);
@@ -58,6 +59,16 @@ const SignUp = () => {
     setErrMsg('');
   }, [user, pwd, matchPwd]);
 
+  // let id = useParams();
+
+  // useEffect(() => {
+  //   dispatch(fetchUser(id.id));
+  // }, []);
+
+  // useEffect(() => {
+  //   dispatch(updateUser());
+  // });
+
   const handleSubmit = async e => {
     e.preventDefault();
     const v1 = USER_REGEX.test(user);
@@ -66,21 +77,19 @@ const SignUp = () => {
       setErrMsg('Invalid Entry');
       return;
     } else {
-      dispatch(createNewUser({ username: user, password: pwd }));
+      dispatch(updateUser({ username: user, password: pwd }));
     }
     setSuccess(true);
   };
 
   return (
-    <div className="Form">
+    <div>
       {success ? (
-        <div className="Success">
-          <h1>Success!</h1>
-
-          <Link to="/sign-in">Click to sign in</Link>
-        </div>
+        <section>
+          <h1>Thank you</h1>
+        </section>
       ) : (
-        <div>
+        <div className="Form">
           <p
             ref={errRef}
             className={errMsg ? 'errmsg' : 'offscreen'}
@@ -88,8 +97,7 @@ const SignUp = () => {
           >
             {errMsg}
           </p>
-          <h4>Please create an account</h4>
-
+          <h4>Update your account</h4>
           <form onSubmit={handleSubmit}>
             <label htmlFor="username">
               <span className={validName ? 'valid' : 'hide'}>
@@ -191,7 +199,7 @@ const SignUp = () => {
             <button
               disabled={!validName || !validPwd || !validMatch ? true : false}
             >
-              Sign Up
+              Update
             </button>
           </form>
         </div>
@@ -200,4 +208,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default UserDetails;

@@ -19,7 +19,7 @@ const Nav = () => {
   const toggleActive = () => {
     setActive(!isActive);
   };
-
+  console.log(cart);
   // checkout creates a fetch request to connect with the 'post' checkout-session - we must pass in the cart data as 'req.body'
   // it passes the correct data and then renders the response (stripe url) to current window
   // see db/index.js for 'post'

@@ -1,79 +1,139 @@
 import React, { useEffect } from 'react';
-import Home from './Home';
+// components
+import Header from './Framework/Header.js.js';
+import Nav from './Framework/Nav';
+import Home from './Framework/Home';
+import Footer from './Framework/Footer';
 import Login from './Login';
-import Cart from './Cart';
-
-import { useSelector, useDispatch } from 'react-redux';
-import { loginWithToken, fetchCart } from '../store';
 import SignUp from './SignUp';
-import Nav from './Nav';
-import Header from './Header.js';
-import Footer from './Footer';
-import Success from './Success';
-import Cancel from './Cancel';
-import Users from './Users';
-import UserDetails from './UserDetails';
-import PastOrders from './PastOrders';
+import AllProducts from './Products/AllProducts';
+import ProductDetails from './Products/ProductDetails';
+import Cart from './Orders/Cart';
+import PastOrders from './Orders/PastOrders';
+import Success from './Orders/Success';
+import Cancel from './Orders/Cancel';
+import Users from './Users/Users';
+import UserDetails from './Users/UserDetails';
 
-import AllProducts from './AllProducts';
-import ProductCard from './ProductCard';
+// state and token
+import { useSelector, useDispatch } from 'react-redux';
 import { fetchProducts } from '../store';
-import { Link, Routes, Route } from 'react-router-dom';
-import ProductDetails from './ProductDetails';
+// import { Link, Routes, Route } from 'react-router-dom';
 import WishList from './WishList';
+import { loginWithToken, fetchCart } from '../store';
+
+// browser and routes
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+// import {
+//   BrowserRouter as Router,
+//   Routes,
+//   Route,
+//   Navigate,
+// } from 'react-router-dom';
+import ProtectedRoutes from './Routes/ProtectedRoutes';
+import PublicRoute from './Routes/PublicRoute';
+import PrivateRoute from './Routes/PrivateRoute';
+import NotFound from './Framework/NotFound';
 
 const App = () => {
-  //useSelector is like mapStateToProps, it gets state from store
+  //useSelector to get our auth state
   const { auth } = useSelector(state => state);
 
-  //useDispatch refrences the thunk (or dispatch function) from store
+  // allow dispatch from store/thunk
   const dispatch = useDispatch();
 
-  //useEffect is similar to componentDidMount & componentDidUpdate, it calls a function after the component renders
-
-  //this keeps a user logged in
+  // fetchToken on load
   useEffect(() => {
     dispatch(loginWithToken());
   }, []);
-
+  // check if we're authorized and get the cart
   useEffect(() => {
     if (auth.id) {
       dispatch(fetchCart());
-      console.log('success!');
     }
   }, [auth]);
-
+  // fetch products on load
   useEffect(() => {
     dispatch(fetchProducts());
   }, []);
 
+  // our makeshift version of protected routes - tried the implementation to no avail so that code is commented out below the export statement
+  // what we did is use ternary's to render specific access based on if we're logged in or not. User can view products however will get a 'please create an account... ' if not logged in.
+  // same goes for account access and cart - will not render unless logged in
+
   return (
     <>
-      <Header title="Video Game Store" />
-      <Nav />
-      {auth.id ? <Home /> : <Login />}
-      {!!auth.id && (
-        <div className="App">
-          <Routes>
-            {/* <Route exact path="/" element={<Home />} /> */}
-            <Route exact path="/home" element={<Home />} />
-            <Route exact path="/users" element={<Users />} />
-            <Route exact path="/sign-up" element={<SignUp />} />
-            <Route exact path="/sign-in" element={<Login />} />
-            <Route exact path="/users/:id" element={<UserDetails />} />
-            <Route exact path="/success" element={<Success />} />
-            <Route exact path="/cancel" element={<Cancel />} />
-            <Route exact path="/products" element={<AllProducts />} />
-            <Route path="/products/:id" element={<ProductDetails />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/order-history" element={<PastOrders />} />
-            <Route path="/wish-list" element={<WishList />} />
-          </Routes>
-        </div>
-      )}
-      <Footer />
+      <Router>
+        <Header title="VIDEO GAMES" />
+        <Nav />
+        {auth.id ? (
+          <div className="App">
+            <Routes>
+              <Route exact path="/" element={<Home />} />
+              <Route exact path="/users" element={<Users />} />
+              <Route exact path="/sign-up" element={<SignUp />} />
+              <Route exact path="/sign-in" element={<Login />} />
+              <Route exact path="/users/:id" element={<UserDetails />} />
+              <Route exact path="/success" element={<Success />} />
+              <Route exact path="/cancel" element={<Cancel />} />
+              <Route exact path="/products" element={<AllProducts />} />
+              <Route path="/products/:id" element={<ProductDetails />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/order-history" element={<PastOrders />} />
+              <Route path="/wish-list" element={<WishList />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </div>
+        ) : (
+          <div className="App">
+            <Routes>
+              <Route exact path="/" element={<Home />} />
+              <Route exact path="/users" element={<Users />} />
+              <Route exact path="/sign-up" element={<SignUp />} />
+              <Route exact path="/sign-in" element={<Login />} />
+              <Route exact path="/users/:id" element={<UserDetails />} />
+              <Route exact path="/success" element={<Success />} />
+              <Route exact path="/cancel" element={<Cancel />} />
+              <Route exact path="/products" element={<AllProducts />} />
+              <Route path="/products/:id" element={<ProductDetails />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/order-history" element={<PastOrders />} />
+            </Routes>
+          </div>
+        )}
+
+        <Footer />
+      </Router>
     </>
   );
 };
 
 export default App;
+
+// Protected
+// {/* <Router>
+//         <div className="App">
+//           <Header title="VIDEO GAMES" />
+//           <Nav />
+//           <Routes>
+//             {/* PRIVATE */}
+//             <Route exact path="/" element={<PrivateRoute />}>
+//               <Route exact path="/" element={<Home />} />
+//               <Route exact path="/products" element={<AllProducts />} />
+//               <Route exact path="/users/:id" element={<UserDetails />} />
+//               <Route path="/cart" element={<Cart />} />
+//             </Route>
+//             <Route exact path="/sign-in" element={<Login />} />
+//             {/* PUBLIC */}
+//             <Route exact path="/" element={<PublicRoute />}>
+//               <Route exact path="/products" element={<AllProducts />} />
+//               <Route path="/products/:id" element={<ProductDetails />} />
+//               <Route exact path="/sign-up" element={<SignUp />} />
+//               <Route path="/order-history" element={<PastOrders />} />
+//               <Route exact path="/success" element={<Success />} />
+//               <Route exact path="/cancel" element={<Cancel />} />
+//               <Route path="*" element={<NotFound />} />
+//             </Route>
+//           </Routes>
+//         </div>
+//       </Router> */}

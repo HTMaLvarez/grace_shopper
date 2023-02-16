@@ -37,13 +37,13 @@ export const fetchUser = id => {
   };
 };
 // updating in the reducer involves returning state, and then mapping through users to match the id, then reset with updates
-export const updateUser = (user, history) => {
+export const updateUser = user => {
   return async dispatch => {
     const { data: updated } = await axios.put(`/api/users/${user.id}`, user);
     dispatch(_updateUser(updated));
-    history.push('/');
   };
 };
+
 // ALL USERS
 export const fetchUsers = () => {
   return async dispatch => {

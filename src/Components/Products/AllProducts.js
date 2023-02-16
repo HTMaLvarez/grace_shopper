@@ -22,27 +22,27 @@ const AllProducts = () => {
 
   return (
     <div className="AllProducts">
-      <h1>All Products </h1>
+      <h4>All Games</h4>
       <div className="ProductCards">
-        <div className="Form">
-          <form className="searchForm" onSubmit={e => e.preventDefault()}>
-            <label htmlFor="search"></label>
-            <input
-              id="search"
-              type="text"
-              placeholder="Search Games"
-              value={search}
-              onChange={e => setSearch(e.target.value)}
-            />
-          </form>
-        </div>
+        {/* <div className="Form"> */}
+        <form className="searchForm" onSubmit={e => e.preventDefault()}>
+          <label htmlFor="search"></label>
+          <input
+            id="search"
+            type="text"
+            placeholder="Search Games"
+            value={search}
+            onChange={e => setSearch(e.target.value)}
+          />
+        </form>
+        {/* </div> */}
 
-        <ul>
+        <ul className="ProductContainer">
           {searchResults.map(product => {
             return (
-              <li key={product.id}>
+              <div className="Column" key={product.id}>
                 <ProductCard product={product} />
-              </li>
+              </div>
             );
           })}
         </ul>

@@ -33,7 +33,7 @@ app.post('/', async (req, res, next) => {
 
 app.put('/:id', async (req, res, next) => {
   try {
-    const user = User.findByPk(req.params.id);
+    const user = await User.findByPk(req.params.id);
     await user.update(req.body);
     res.json(user);
   } catch (err) {
