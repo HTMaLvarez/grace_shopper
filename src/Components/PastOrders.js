@@ -10,15 +10,14 @@ const PastOrders = () => {
   }, []);
   const { order } = useSelector((state) => state);
   console.log("this is order", order);
-  console.log("this is past orders", order.PastOrders);
   return (
     <div>
       <h2>Past Orders</h2>
       <div>
-        {order.PastOrders?.length > 0 ? (
-          order.PastOrders.map((order) => (
+        {order.pastOrders?.length > 0 ? (
+          order.pastOrders.map((order) => (
             <div key={order.id}>
-              <p>{order.id}</p>
+              <p>Order Number: {order.id}</p>
             </div>
           ))
         ) : (

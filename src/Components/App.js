@@ -20,6 +20,7 @@ import ProductCard from "./ProductCard";
 import { fetchProducts } from "../store";
 import { Link, Routes, Route } from "react-router-dom";
 import ProductDetails from "./ProductDetails";
+import WishList from "./WishList";
 
 const App = () => {
   //useSelector is like mapStateToProps, it gets state from store
@@ -65,6 +66,7 @@ const App = () => {
             <Route path="/products/:id" element={<ProductDetails />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/order-history" element={<PastOrders />} />
+            <Route path="/wish-list" element={<WishList />} />
           </Routes>
         </div>
       )}

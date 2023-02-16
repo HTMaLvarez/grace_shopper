@@ -1,9 +1,9 @@
-import React from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchUser } from '../store';
-import UpdateUser from './UpdateUser';
+import React from "react";
+import { Link, useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchUser } from "../store";
+import UpdateUser from "./UpdateUser";
 
 const UserDetails = () => {
   let id = useParams();
@@ -13,9 +13,8 @@ const UserDetails = () => {
     dispatch(fetchUser(id.id));
   }, []);
 
-  const { user } = useSelector(state => state);
+  const { user } = useSelector((state) => state);
   const userProfile = user.user;
-  // console.log(userProfile);
 
   return (
     <main className="UserContainer">

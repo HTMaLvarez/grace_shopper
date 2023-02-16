@@ -33,7 +33,6 @@ const Nav = () => {
         return res.json().then((json) => Promise.reject(json));
       })
       .then(({ url }) => {
-        // console.log(url);
         window.location = url;
       })
       .catch((e) => {
@@ -64,6 +63,9 @@ const Nav = () => {
           </li>
           <li>
             <Link to="/order-history">Order History</Link>
+          </li>
+          <li>
+            <Link to="/wish-list">Wish List</Link>
           </li>
         </ul>
       </div>
