@@ -18,7 +18,7 @@ const ReviewsForProduct = () => {
       <h2>
         Reviews for <Link to={`/products/${id}`}>{singleProduct.name}</Link>
       </h2>
-
+      <br />
       <div>
         {productReviews.allReviews.map(review => {
           return (
@@ -27,10 +27,17 @@ const ReviewsForProduct = () => {
               <p>Comments:{review.review ? review.review : '(no comments)'}</p>
               <div>by @{review.user.username}</div>
               <hr />
+              <br />
             </div>
           );
         })}
       </div>
+      <br />
+      <h3>
+        <Link to={`/add-a-review/${singleProduct.id}`}>
+          Leave your own review
+        </Link>
+      </h3>
     </div>
   );
 };

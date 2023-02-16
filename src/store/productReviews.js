@@ -3,6 +3,7 @@ import axios from 'axios';
 //Action Types
 const FETCH_ALL_REVIEWS = 'FETCH_ALL_REVIEWS';
 const FETCH_SINGLE_REVIEW = 'FETCH_SINGLE_REVIEW';
+const ADD_REVIEW = 'ADD_REVIEW';
 
 //Action Creators
 const _fetchAllReviews = allReviews => {
@@ -16,6 +17,13 @@ const _fetchSingleReview = singleReview => {
   return {
     type: FETCH_SINGLE_REVIEW,
     singleReview,
+  };
+};
+
+const _addReview = newReview => {
+  return {
+    type: ADD_REVIEW,
+    newReview,
   };
 };
 
@@ -48,6 +56,18 @@ const fetchSingleReview = reviewId => {
   };
 };
 
+const addReview = (rating, review, userId, productId) => {
+  return async dispatch => {
+    const { data: newReview } = await axios.post('/api/productReviews', {
+      rating,
+      review,
+      userId,
+      productId,
+    });
+    dispatch(_addReview(newReview));
+  };
+};
+
 //Reducer
 
 const productReviews = (
@@ -59,6 +79,8 @@ const productReviews = (
       return { ...state, allReviews: [...action.allReviews] };
     case FETCH_SINGLE_REVIEW:
       return { ...state, singleReview: { ...action.singleReview } };
+    case ADD_REVIEW:
+      return { ...state, allReviews: [...state.allReviews, action.newReview] };
     default:
       return state;
   }
@@ -69,5 +91,6 @@ export {
   fetchSingleReview,
   fetchAllReviewsByAuthor,
   fetchAllReviewsByProduct,
+  addReview,
 };
 export default productReviews;

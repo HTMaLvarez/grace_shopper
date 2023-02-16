@@ -29,11 +29,9 @@ const ProductDetails = () => {
       </button>
 
       <h2>{singleProduct.name}</h2>
-
       <Link to={`/productReviews/product/${singleProduct.id}`}>
         <h5>See what others had to say...</h5>
       </Link>
-
       <button
         onClick={() => {
           dispatch(addToCart(singleProduct, 1));

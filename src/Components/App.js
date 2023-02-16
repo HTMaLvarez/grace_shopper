@@ -29,6 +29,7 @@ import ProtectedRoutes from './Routes/ProtectedRoutes';
 import PublicRoute from './Routes/PublicRoute';
 import PrivateRoute from './Routes/PrivateRoute';
 import NotFound from './Framework/NotFound';
+import ReviewForm from './ReviewForm';
 
 const App = () => {
   //useSelector is like mapStateToProps, it gets state from store
@@ -83,6 +84,11 @@ const App = () => {
                 path='/productReviews/product/:id'
                 element={<ReviewsForProduct />}
               />
+              <Route
+                exact
+                path='/add-a-review/:productId'
+                element={<ReviewForm />}
+              />
             </Routes>
           </div>
         ) : (
@@ -103,6 +109,11 @@ const App = () => {
                 exact
                 path='/productReviews/product/:id'
                 element={<ReviewsForProduct />}
+              />
+              <Route
+                exact
+                path='/add-a-review/:productId'
+                element={<ReviewForm />}
               />
             </Routes>
           </div>
