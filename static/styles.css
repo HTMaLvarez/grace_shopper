@@ -1,6 +1,8 @@
 body {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 12pt;
+  font-size: 13pt;
+  font-family: 'Roboto', sans-serif;
+  margin: 20px;
+  background-color: rgb(255, 255, 255);
 }
 
 * {
@@ -8,36 +10,76 @@ body {
   padding: 0;
   box-sizing: border-box;
 }
+.SimpleText {
+  font-family: Arial, Helvetica, sans-serif;
+}
 .App {
-  padding: 20px;
+  height: 90%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .Header,
 .Footer {
   width: 100%;
-  background-color: #171717;
+  background-image: linear-gradient(rgb(87, 87, 87), rgb(0, 0, 0));
   color: white;
   padding: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-family: 'Orbitron', sans-serif;
 }
 
 .Header h1 {
-  font-size: 1.5rem;
+  font-size: 2.3rem;
 }
 
 .Nav {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: rgb(213, 213, 213);
 }
-.NavRight {
-  padding: 10px;
+.NavButtons {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}
+.AccountButton {
+  display: flex;
+}
+
+.AccountButton button {
+  background-color: #f35d00;
+  padding: 5px;
+  border-radius: 0.25rem;
+  margin-right: 5px;
+}
+.AccountButton button:hover {
+  background-color: #b74600;
+}
+.AccountButton a {
+  text-decoration: none;
+  color: white;
 }
 .CartButton {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-right: 10px;
+}
+
+.CartButton button {
+  background-image: linear-gradient(grey, rgb(0, 0, 0));
+  padding: 5px;
+  border-radius: 0.25rem;
+  color: white;
 }
 
 .Nav ul {
@@ -61,30 +103,8 @@ body {
 .Nav li:focus,
 .Nav li:hover a,
 .Nav li:focus a {
-  background-color: #eee;
-  color: #333;
-}
-.On {
-  background-color: rgb(211, 211, 211);
-  border-radius: 0.25rem;
-  box-shadow: 2px 3px #b0b0b0;
-  padding: 7px;
-  color: rgb(84, 84, 84);
-}
-.Off {
-  display: none;
-}
-.ModalContainer {
-  display: flex;
-  flex-direction: column;
-  /* padding: 5px; */
-}
-.ModalBody {
-  padding: 5px;
-}
-.ModalFooter {
-  padding: 5px;
-  margin-top: 10px;
+  background-color: #fafafa;
+  color: #6c6c6c;
 }
 
 .Close {
@@ -94,12 +114,61 @@ body {
   border-radius: 0.25rem;
 }
 .Checkout {
-  background-color: rgb(217, 141, 0);
+  background-color: rgb(0, 80, 12);
+  font-size: 8pt;
   color: white;
   padding: 2px;
   border-radius: 0.25rem;
 }
-/*--------------------------------------*/
+.Success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/*-------------------------HOME--------------------------------*/
+.Users {
+  width: 90%;
+}
+
+.Banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.25rem;
+  color: white;
+  background-color: black;
+  /* box-shadow: 3px 5px 10px #878787; */
+  padding: 10px;
+  width: 100%;
+  height: 20%;
+  /* border: 2pt solid red; */
+  font-family: 'Orbitron', sans-serif;
+  font-size: 16pt;
+}
+.HomeContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  width: 100%;
+  padding: 20px;
+  /* border: 2pt solid red; */
+}
+.LogOut {
+  display: flex;
+  align-items: right;
+}
+.LogOut button {
+  padding: 5px;
+  width: 200px;
+  background-color: #f35d00;
+  border: 1px solid #ddd;
+  border-radius: 0.25rem;
+  color: white;
+}
 
 .UserCard {
   background-color: rgb(243, 243, 243);
@@ -107,15 +176,25 @@ body {
   box-shadow: 2px 6px #ececec;
   padding: 7px;
   margin-top: 15px;
-  width: 50%;
+  width: 90%;
 }
 
 .ProfileHeader {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   background-color: rgb(95, 95, 95);
   border-radius: 0.25rem;
   box-shadow: 2px 6px #d7d7d7;
   padding: 7px;
   color: white;
+}
+
+.Rating {
+  width: 27%;
+  /* padding-bottom: 32%;
+  margin-bottom: 2%; */
+  position: relative;
 }
 
 .ProfileDetails {
@@ -124,6 +203,7 @@ body {
   box-shadow: 2px 6px #e3e3e3;
   padding: 7px;
   margin-top: 15px;
+  line-height: 1.5;
 }
 
 .UpdateUser {
@@ -136,4 +216,333 @@ body {
   padding: 5px;
   margin-top: 20px;
   width: 40%;
+}
+/*-------------------------PRODUCTS--------------------------------*/
+
+.AllProducts {
+  border-radius: 0.25rem;
+  box-shadow: 3px 5px 10px #878787;
+  padding: 10px;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(255, 255, 255);
+  /* border: 2pt solid red; */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 16pt;
+}
+.AllProducts h4 {
+  margin-left: 7px;
+}
+
+.ProductCards ul a {
+  list-style: none;
+  margin-top: 10px;
+  font-family: 'Orbitron', sans-serif;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
+
+.ProductContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.Column {
+  flex: 27%;
+  height: 350px;
+  padding: 5px;
+  margin: 10px;
+  text-align: center;
+  background-color: rgb(239, 239, 239);
+  box-shadow: 3px 2px 5px #878787;
+  border-radius: 0.5rem;
+}
+.Column:hover {
+  flex: 27%;
+  height: 350px;
+  padding: 5px;
+  margin: 10px;
+  text-align: center;
+  background-color: rgb(223, 223, 223);
+  border-radius: 0.5rem;
+  border: 2pt solid rgb(255, 255, 255);
+}
+
+/*-------------------------PRODUCT CARD CONTAINER--------------------------------*/
+
+.CardContainer {
+  padding: 13px;
+  margin-bottom: 20px;
+}
+
+/*-------------------------CARD DETAILS--------------------------------*/
+
+.CardHeader {
+  background-color: rgb(46, 46, 46);
+  color: white;
+  padding: 5px;
+  border-radius: 0.25rem;
+  border-left: 5pt solid orangered;
+}
+
+img {
+  padding: 5px;
+  height: 250px;
+  width: 200px;
+  margin-top: 10px;
+  border-radius: 0.5rem;
+}
+
+.Form .Quantity {
+  width: 27px;
+}
+
+.GameName {
+  border-left: 5pt solid orangered;
+  background-color: rgb(46, 46, 46);
+  border-radius: 0.25rem;
+  padding: 7px;
+  color: white;
+  width: 100%;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.Details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+  background-color: rgb(239, 239, 239);
+  border-radius: 0.25rem;
+  box-shadow: 3px 5px 10px #878787;
+  padding: 10px;
+  padding-bottom: 50px;
+  height: 85%;
+  width: 50%;
+  font-size: 12pt;
+}
+.ItemQuantity {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/* .ItemQuantity form {
+  background-color: grey;
+  border: 2pt solid red;
+} */
+.ItemQuantity form input {
+  height: 27px;
+  width: 20%;
+}
+
+.ItemQuantity form button {
+  padding: 5px;
+  width: 17%;
+  background-color: #f35d00;
+  border: 1px solid #ddd;
+  border-radius: 0.25rem;
+  color: white;
+  margin: 5px;
+}
+.ItemQuantity button {
+  padding: 5px;
+  width: 40%;
+  background-image: linear-gradient(grey, rgb(0, 0, 0));
+  border: 1px solid #ddd;
+  border-radius: 0.25rem;
+  color: white;
+  margin: 5px;
+}
+
+.Description {
+  display: flex;
+  padding: 12px;
+  box-shadow: 1px 2.5px 5px #adadad;
+  border-radius: 0.25rem;
+  text-align: left;
+  /* border: 2pt solid red; */
+}
+
+/*-------------------------CART/Modal--------------------------------*/
+
+.Cart {
+  border-radius: 0.25rem;
+  padding: 10px;
+  width: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.LineItems {
+  margin-top: 10px;
+}
+
+.Item {
+  border-radius: 0.25rem;
+  line-height: 1.5;
+  font-size: 11pt;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 3px;
+  color: rgb(73, 73, 73);
+  width: 100%;
+  margin-bottom: 20px;
+}
+.NamePrice {
+  display: flex;
+  border-bottom: 2pt solid rgb(203, 203, 203);
+  border-left: 2pt solid rgb(40, 40, 40);
+  justify-content: space-between;
+  color: rgb(102, 102, 102);
+  font-size: 10pt;
+  padding: 5px;
+}
+
+.ModalButton button {
+  font-size: 8pt;
+  margin-top: 5px;
+  justify-content: right;
+}
+
+.Item button {
+  margin-top: 10px;
+  padding: 4px;
+  background-color: #ea5a00;
+  color: white;
+  border-radius: 0.25rem;
+  border: none;
+}
+.ModalFooter {
+  padding: 5px;
+  margin-top: 10px;
+  font-size: 12pt;
+}
+button.Checkout {
+  background-color: #5d5d5d;
+  background-image: linear-gradient(grey, rgb(0, 0, 0));
+}
+
+.On {
+  position: absolute;
+  top: 20%;
+  right: 0.5%;
+  transform: translate(-15%, -35%);
+  background-color: rgb(255, 255, 255);
+  box-shadow: 3px 5px 10px #878787;
+  border-radius: 0.25rem;
+  padding: 1px;
+  color: rgb(165, 165, 165);
+}
+.Off {
+  display: none;
+}
+
+/*-------------------------FORMS--------------------------------*/
+
+.searchForm {
+  width: 25%;
+  display: flex;
+  justify-content: flex-start;
+  margin: 0.25 0 0;
+  padding: 0 0.5rem 0.25rem;
+}
+
+.searchForm input[type='text'] {
+  flex-grow: 1;
+  width: 40%;
+  min-height: 38px;
+  font-size: 10pt;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  outline: none;
+}
+
+.SignUp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Form {
+  width: 30%;
+  padding: 10px;
+  border-radius: 0.25rem;
+  margin-bottom: 15px;
+}
+
+form input {
+  width: 100%;
+  padding: 8px 12px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+form button {
+  padding: 5px;
+  width: 30%;
+  background-color: #f35d00;
+  border: 1px solid #ddd;
+  border-radius: 0.25rem;
+  color: white;
+}
+
+form button:hover {
+  background-color: #b74600;
+}
+
+.AddToCart button {
+  background-color: orangered;
+}
+
+.Button {
+  background-color: orangered;
+}
+
+/*-------------------------SignUp Form--------------------------------*/
+.instructions {
+  font-size: 0.75rem;
+  border-radius: 0.5rem;
+  background: #000;
+  color: #fff;
+  padding: 0.25rem;
+  position: relative;
+  bottom: -10px;
+}
+
+.instructions > svg {
+  margin-right: 0.25rem;
+}
+
+.offscreen {
+  position: absolute;
+  left: -9999px;
+}
+
+.hide {
+  display: none;
+}
+
+.valid {
+  color: limegreen;
+  margin-left: 0.25rem;
+}
+
+.invalid {
+  color: red;
+  margin-left: 0.25rem;
+}
+
+.errmsg {
+  background-color: lightpink;
+  color: firebrick;
+  font-weight: bold;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.line {
+  display: inline-block;
 }

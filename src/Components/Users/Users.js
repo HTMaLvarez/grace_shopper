@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import UserCard from './UserCard';
-import { fetchUser, fetchUsers } from '../store';
+import { fetchUser, fetchUsers } from '../../store';
 
 const Users = () => {
   const dispatch = useDispatch();
@@ -15,6 +15,7 @@ const Users = () => {
 
   const { user } = useSelector(state => state);
   const activeUsers = user.users;
+  console.log(user);
 
   useEffect(() => {
     const filteredUsers = activeUsers.filter(user =>
@@ -24,7 +25,7 @@ const Users = () => {
   }, [activeUsers, search]);
 
   return (
-    <div>
+    <div className="Users">
       <h3>All Users</h3>
 
       <div className="Form">
