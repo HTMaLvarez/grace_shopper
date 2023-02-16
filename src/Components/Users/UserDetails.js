@@ -26,21 +26,25 @@ const UserDetails = () => {
   const genres = userProfile.favoriteGenres;
 
   return (
-    <main className="UserContainer">
-      <div className="ProfileHeader">
-        <h2>{name}</h2>
-        <div className="Rating">
-          <h3>User Rating: {rating}</h3>
+    <>
+      <div className="UserContainer">
+        <div className="ProfileHeader">
+          <h2>{name}</h2>
+          <div className="Rating">
+            <div>
+              User Rating <h2>{rating}</h2>
+            </div>
+          </div>
+        </div>
+        <div className="ProfileDetails">
+          <h3>Favorite genre's</h3>
+          <h5>{genres}</h5>
+        </div>
+        <div className="UpdateUser">
+          <UpdateUser id={id} />
         </div>
       </div>
-      <div className="ProfileDetails">
-        <h3>Favorite genre's</h3>
-        <h4>{genres}</h4>
-      </div>
-      <div className="UpdateUser">
-        <UpdateUser id={id} />
-      </div>
-    </main>
+    </>
   );
 };
 

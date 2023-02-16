@@ -14,26 +14,16 @@ import Success from './Orders/Success';
 import Cancel from './Orders/Cancel';
 import Users from './Users/Users';
 import UserDetails from './Users/UserDetails';
+import WishList from './WishList';
+import NotFound from './Framework/NotFound';
 
 // state and token
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchProducts } from '../store';
 // import { Link, Routes, Route } from 'react-router-dom';
-import WishList from './WishList';
 import { loginWithToken, fetchCart } from '../store';
-
 // browser and routes
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
-// import {
-//   BrowserRouter as Router,
-//   Routes,
-//   Route,
-//   Navigate,
-// } from 'react-router-dom';
-import ProtectedRoutes from './Routes/ProtectedRoutes';
-import PublicRoute from './Routes/PublicRoute';
-import PrivateRoute from './Routes/PrivateRoute';
-import NotFound from './Framework/NotFound';
+import { HashRouter as Router, Routes, Switch, Route } from 'react-router-dom';
 
 const App = () => {
   //useSelector to get our auth state
@@ -80,8 +70,8 @@ const App = () => {
               <Route path="/products/:id" element={<ProductDetails />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/order-history" element={<PastOrders />} />
-              <Route path="/wish-list" element={<WishList />} />
               <Route path="*" element={<NotFound />} />
+              <Route path="/wish-list" element={<WishList />} />
             </Routes>
           </div>
         ) : (
@@ -98,6 +88,7 @@ const App = () => {
               <Route path="/products/:id" element={<ProductDetails />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/order-history" element={<PastOrders />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </div>
         )}
@@ -111,29 +102,31 @@ const App = () => {
 export default App;
 
 // Protected
-// {/* <Router>
-//         <div className="App">
-//           <Header title="VIDEO GAMES" />
-//           <Nav />
-//           <Routes>
-//             {/* PRIVATE */}
-//             <Route exact path="/" element={<PrivateRoute />}>
-//               <Route exact path="/" element={<Home />} />
-//               <Route exact path="/products" element={<AllProducts />} />
-//               <Route exact path="/users/:id" element={<UserDetails />} />
-//               <Route path="/cart" element={<Cart />} />
-//             </Route>
-//             <Route exact path="/sign-in" element={<Login />} />
-//             {/* PUBLIC */}
-//             <Route exact path="/" element={<PublicRoute />}>
-//               <Route exact path="/products" element={<AllProducts />} />
-//               <Route path="/products/:id" element={<ProductDetails />} />
-//               <Route exact path="/sign-up" element={<SignUp />} />
-//               <Route path="/order-history" element={<PastOrders />} />
-//               <Route exact path="/success" element={<Success />} />
-//               <Route exact path="/cancel" element={<Cancel />} />
-//               <Route path="*" element={<NotFound />} />
-//             </Route>
-//           </Routes>
-//         </div>
-//       </Router> */}
+{
+  /* <Router>
+        <div className="App">
+          <Header title="VIDEO GAMES" />
+          <Nav />
+          <Routes>
+            PRIVATE
+            <Route exact path="/" element={<PrivateRoute />}>
+              <Route exact path="/" element={<Home />} />
+              <Route exact path="/products" element={<AllProducts />} />
+              <Route exact path="/users/:id" element={<UserDetails />} />
+              <Route path="/cart" element={<Cart />} />
+            </Route>
+            <Route exact path="/sign-in" element={<Login />} />
+            PUBLIC
+            <Route exact path="/" element={<PublicRoute />}>
+              <Route exact path="/products" element={<AllProducts />} />
+              <Route path="/products/:id" element={<ProductDetails />} />
+              <Route exact path="/sign-up" element={<SignUp />} />
+              <Route path="/order-history" element={<PastOrders />} />
+              <Route exact path="/success" element={<Success />} />
+              <Route exact path="/cancel" element={<Cancel />} />
+              <Route path="*" element={<NotFound />} />
+            </Route>
+          </Routes>
+        </div>
+      </Router>  */
+}

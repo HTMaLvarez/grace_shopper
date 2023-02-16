@@ -4,6 +4,18 @@ const { User, Order } = require('../db');
 
 module.exports = app;
 
+app.get('/', async (req, res, next) => {
+  try {
+    const user = await User.findByToken(req.headers.authorization);
+    const orders = await Order.findAll({
+      where: { userId: user.id },
+    });
+    res.send(orders);
+  } catch (ex) {
+    next(ex);
+  }
+});
+
 app.post('/', async (req, res, next) => {
   try {
     const user = await User.findByToken(req.headers.authorization);

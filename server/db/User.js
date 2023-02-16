@@ -91,7 +91,7 @@ User.authenticate = async ({ username, password }) => {
   throw error;
 };
 
-//////// AFTER AUTHENTICATE WE FIND AND VALIATE TOKEN
+//////// AFTER AUTHENTICATE WE FIND AND VALIDATE TOKEN
 // need an id, and the token to verify
 User.findByToken = async token => {
   try {

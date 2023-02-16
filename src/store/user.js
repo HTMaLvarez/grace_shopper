@@ -25,8 +25,6 @@ export const createNewUser = credentials => {
   return async dispatch => {
     const { data: user } = await axios.post('/api/users', credentials);
     dispatch(_createNewUser(user));
-    // can modify this later to push wherever we want
-    // history.push('/');
   };
 };
 

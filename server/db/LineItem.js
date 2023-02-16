@@ -18,11 +18,6 @@ const LineItem = conn.define('lineItem', {
     type: STRING,
     allowNull: false,
   },
-
-  // productId: {
-  //   type: UUID,
-  //   allowNull: false
-  // },
   orderId: {
     type: UUID,
     allowNull: false,

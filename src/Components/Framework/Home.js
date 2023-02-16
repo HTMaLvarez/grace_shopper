@@ -14,12 +14,14 @@ const Home = () => {
       </div>
 
       <div className="HomeContent">
+        <p>You love games don't you? Well you've come to the right place!</p>
+        <br></br>
         <p>
-          Then you've come to the right place! <br></br>HTMaLverez has
-          cultivated the very finest collection of video games. Please click
-          around our site and enjoy yourself. We can assure you that most of our
-          site works like a charm, however if something seems off, it's probably
-          a broken piece of shit.
+          <strong>HTMaLverez</strong> has cultivated the very finest collection
+          of video games. Some old some new, some probably suck, but most don't.
+          Please click around our site and enjoy yourself. We can assure you
+          that most of our site works like a charm, however if something seems
+          off, it's probably becasue we didn't finish it.
         </p>
       </div>
       <div className="LogOut">
