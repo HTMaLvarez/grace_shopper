@@ -75,7 +75,7 @@ const SignUp = () => {
     <div className="Form">
       {success ? (
         <div className="Success">
-          <h1>Success!</h1>
+          <h2>Thank you!</h2>
 
           <Link to="/sign-in">Click to sign in</Link>
         </div>

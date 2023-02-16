@@ -2,38 +2,55 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchSingleProduct, addToCart } from '../../store';
 import { useParams, Link } from 'react-router-dom';
+import { createNewWish, fetchWishes } from '../../store';
 
 const ProductDetails = () => {
-  // create a quantity state - call 'setQuantity' 'onClick'
-  const [quantity, setQuantity] = useState(0);
-
-  // desctruct single product from state
-  const { singleProduct } = useSelector(state => state);
-
-  // useParams to grab the id - same as match.params.id
+  // enable dispatch
+  const dispatch = useDispatch();
+  // useParams to grab the product id - which is params.id
   const { id } = useParams();
 
-  const dispatch = useDispatch();
+  // set auth var.
+  const { auth } = useSelector(state => state);
+  // set the logged in user's id var
+  const userId = auth.id;
+
+  // fetch the product
   useEffect(() => {
     dispatch(fetchSingleProduct(id));
   }, []);
+  // desctruct single product from state
+  const { singleProduct } = useSelector(state => state);
+  console.log(singleProduct.name);
 
+  // fetch wishlist
+  // useEffect(() => {
+  //   dispatch(fetchWishes());
+  // }, []);
+  // destruct wishlist
+  const { wishList } = useSelector(state => state);
+  // console.log(wishList);
+
+  // create a quantity state - call 'setQuantity' 'onClick'
+  const [quantity, setQuantity] = useState(0);
+
+  // add item - dispatch AddToCart and reset quantity
   const add = () => {
     dispatch(addToCart(singleProduct, quantity));
     setQuantity(0);
   };
 
-  // set auth var.
-  const { auth } = useSelector(state => state);
+  const addToWishlist = () => {
+    dispatch(createNewWish({ game: singleProduct.name }));
+  };
 
   return (
     <div className="Details">
       <div className="GameName">
         <h2>{singleProduct.name}</h2>
       </div>
-      {/* <div className="ImageBox"> */}
       <img src={`static/${singleProduct.imageURL}`}></img>
-      {/* </div> */}
+
       {auth.id ? (
         <div className="ItemQuantity">
           <form>
@@ -43,14 +60,14 @@ const ProductDetails = () => {
           </form>
 
           <button onClick={add}>Add To Cart</button>
+          <button onClick={addToWishlist}>Add to Wishlist</button>
         </div>
       ) : (
-        <div>
-          <Link to="/sign-up">
-            please create an account if you wish to shop
-          </Link>
+        <div className="CreateAccount">
           <br></br>
-          <Link to="/sign-in">or sign in to your account</Link>
+          <Link to="/sign-in">
+            Please Sign In to create a cart with your account.
+          </Link>
         </div>
       )}
 

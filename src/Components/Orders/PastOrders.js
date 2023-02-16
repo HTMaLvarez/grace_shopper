@@ -4,21 +4,28 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 
 const PastOrders = () => {
+  //useSelector to get our auth state
+  const { auth } = useSelector(state => state);
+  // const userId = auth.id;
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchPastOrders());
   }, []);
   const { order } = useSelector(state => state);
   console.log('this is order', order);
-  console.log('this is past orders', order.PastOrders);
+  console.log('this is past orders', order.pastOrders);
+
   return (
-    <div>
-      <h2>Past Orders</h2>
+    <div className="PastOrders">
+      <h2>Your Account Order History</h2>
       <div>
-        {order.PastOrders?.length > 0 ? (
-          order.PastOrders.map(order => (
-            <div key={order.id}>
-              <p>Order Number: {order.id}</p>
+        {order.pastOrders?.length > 0 ? (
+          order.pastOrders.map(order => (
+            <div className="OrdersList" key={order.id}>
+              <div>
+                <p>Order Number:</p> {order.id}
+              </div>
             </div>
           ))
         ) : (

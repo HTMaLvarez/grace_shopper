@@ -38,7 +38,7 @@ const Login = () => {
         <Menu />
       ) : (
         <div>
-          <h4>Login</h4>
+          <h4>Sign In</h4>
           <form onSubmit={login}>
             <input
               placeholder="username"

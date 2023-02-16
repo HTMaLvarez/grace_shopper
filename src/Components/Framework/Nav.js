@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom';
 import Modal from './Modal';
 const { checkout } = require('../../stripe');
 // import { checkout } from '../../stripe';
-import { logout, updateCart, fetchUser } from '../../store';
+import { logout, updateCart, fetchUser, createNewOrder } from '../../store';
 import { useSelector, useDispatch } from 'react-redux';
+// const { checkout } = require('../stripe');
 
 const Nav = () => {
   //useSelector to get our auth state
@@ -45,16 +46,9 @@ const Nav = () => {
   // set user var.
   const user = useSelector(state => state);
 
-  // checkout creates fetch request - connect with the 'post' checkout-session - must pass in the cart data as 'req.body'
+  // checkout creates fetch request - connect with 'post' checkout-session - must pass in the cart data as 'req.body'
   // it passes the correct data and then renders the response (stripe url) to current window
   // see db/index.js for 'post'
-  console.log(cart.lineItems);
-  const print = arr => {
-    arr.forEach(item => {
-      console.log(item.productId);
-    });
-  };
-  console.log(print(cart.lineItems));
 
   const checkout = async () => {
     await fetch('/create-checkout-session', {
@@ -93,7 +87,7 @@ const Nav = () => {
           <Link to="/order-history">Order History</Link>
         </li>
         <li>
-          <Link to="/success">Success</Link>
+          <Link to="/wish-list">Wishlist</Link>
         </li>
       </ul>
 
@@ -104,7 +98,7 @@ const Nav = () => {
         {auth.id ? (
           <div className="AccountButton">
             <button>
-              <Link to={`/users/${id}`}>My Account</Link>
+              <Link to={`/users/${id}`}>ACCOUNT</Link>
             </button>
             <div className="CartButton">
               <button onClick={toggleActive}>CART</button>
@@ -121,7 +115,7 @@ const Nav = () => {
             <button className="Close" onClick={toggleActive}>
               Close
             </button>
-            <h3>{auth.username} cart</h3>
+            <h3>{auth.username}'s' cart</h3>
             <p>
               ({cartQuantityTotal}) {cartQuantityTotal === 1 ? 'item' : 'items'}
             </p>
@@ -144,6 +138,11 @@ const Nav = () => {
                   </div>
                 </div>
               ))}
+            </div>
+            <div className="CreateOrder">
+              <button onClick={() => dispatch(createNewOrder(cart))}>
+                Create Order
+              </button>
             </div>
             <div className="ModalFooter">
               <p>

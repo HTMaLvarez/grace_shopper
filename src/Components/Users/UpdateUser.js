@@ -1,7 +1,5 @@
 import React from 'react';
 import { useRef, useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import Login from '../Login';
 // import the font awesome shit
 import {
   faCheck,
@@ -59,16 +57,6 @@ const UserDetails = props => {
     setErrMsg('');
   }, [user, pwd, matchPwd]);
 
-  // let id = useParams();
-
-  // useEffect(() => {
-  //   dispatch(fetchUser(id.id));
-  // }, []);
-
-  // useEffect(() => {
-  //   dispatch(updateUser());
-  // });
-
   const handleSubmit = async e => {
     e.preventDefault();
     const v1 = USER_REGEX.test(user);
@@ -89,7 +77,7 @@ const UserDetails = props => {
           <h1>Thank you</h1>
         </section>
       ) : (
-        <div className="Form">
+        <div className="UpdateForm">
           <p
             ref={errRef}
             className={errMsg ? 'errmsg' : 'offscreen'}
@@ -97,8 +85,8 @@ const UserDetails = props => {
           >
             {errMsg}
           </p>
-          <h4>Update your account</h4>
-          <form onSubmit={handleSubmit}>
+          <p>Update your account</p>
+          <form>
             <label htmlFor="username">
               <span className={validName ? 'valid' : 'hide'}>
                 <FontAwesomeIcon icon={faCheck} />

@@ -3,11 +3,15 @@ const User = require('./User');
 const Product = require('./Product');
 const Order = require('./Order');
 const LineItem = require('./LineItem');
+const Wish = require('./WishList');
 
 Order.belongsTo(User);
 LineItem.belongsTo(Order);
 Order.hasMany(LineItem);
 LineItem.belongsTo(Product);
+Wish.belongsTo(Product);
+Product.hasMany(Wish);
+Wish.belongsTo(User);
 
 const syncAndSeed = async () => {
   await conn.sync({ force: true });
@@ -41,7 +45,6 @@ const syncAndSeed = async () => {
       favoriteGenres: 'brawlers, sports, rpg',
       userRating: 8.3,
     }),
-    // created 6 new products with 'id' from stripe
 
     Product.create({
       id: 'price_1MbcWgIgQNSadm7JTexkCvvj',
@@ -91,9 +94,6 @@ const syncAndSeed = async () => {
       description:
         'Resident Evil 2 is a 1998 survival horror video game developed and published by Capcom for the PlayStation. The player controls Leon S. Kennedy and Claire Redfield, who must escape Raccoon City after its citizens are transformed into zombies by a biological weapon two months after the events of the original Resident Evil.',
     }),
-    // Product.create({ name: 'Sonic The Hedgehog' }),
-    // Product.create({ name: 'Mario Kart' }),
-    // Product.create({ name: 'Donkey Kong Country' }),
 
     User.create({
       username: 'Doug',
@@ -102,6 +102,17 @@ const syncAndSeed = async () => {
       userRating: 9.2,
     }),
   ]);
+  const [wish1, wish2, wish3] = await Promise.all([
+    Wish.create({ game: 'Contra' }),
+    Wish.create({ game: 'Street Fighter 2' }),
+    Wish.create({ game: 'Super Mario 3' }),
+  ]);
+  wish1.userId = doug.id;
+  await wish1.save();
+  wish2.userId = maria.id;
+  await wish2.save();
+  wish3.userId = maria.id;
+  await wish3.save();
 
   const cart = await doug.getCart();
   await doug.addToCart({ product: zelda2, quantity: 3 });
@@ -120,6 +131,9 @@ const syncAndSeed = async () => {
       streetFighter2,
       residentEvil,
     },
+    carts: {
+      cart,
+    },
   };
 };
 
@@ -127,4 +141,6 @@ module.exports = {
   syncAndSeed,
   User,
   Product,
+  Wish,
+  Order,
 };

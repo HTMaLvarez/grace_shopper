@@ -22,7 +22,7 @@ const AllProducts = () => {
 
   return (
     <div className="AllProducts">
-      <h4>All Games</h4>
+      <p>All Games</p>
       <div className="ProductCards">
         {/* <div className="Form"> */}
         <form className="searchForm" onSubmit={e => e.preventDefault()}>
@@ -52,4 +52,3 @@ const AllProducts = () => {
 };
 
 export default AllProducts;
-//<Link to={`/product/${product.id}`}>{product.name}</Link>

@@ -5,16 +5,16 @@ const ProductCard = props => {
   const { product } = props;
 
   return (
-    <div className="CardContainer">
-      <div className="CardHeader">
-        <h3>
-          <Link to={`/products/${product.id}`}>{product.name}</Link>
-        </h3>
+    <Link to={`/products/${product.id}`}>
+      <div className="CardContainer">
+        <div className="CardHeader">
+          <h3>{product.name}</h3>
+        </div>
+        <div className="ImageBox">
+          <img src={`static/${product.imageURL}`} sizes="200px"></img>
+        </div>
       </div>
-      <div className="ImageBox">
-        <img src={`static/${product.imageURL}`} sizes="200px"></img>
-      </div>
-    </div>
+    </Link>
   );
 };
 

@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 const initialState = {
   order: {},
@@ -6,25 +6,25 @@ const initialState = {
 };
 
 //action type
-const CREATE_ORDER = "CREATE_ORDER";
-const FETCH_PAST_ORDERS = "FETCH_PAST_ORDERS";
+const CREATE_ORDER = 'CREATE_ORDER';
+const FETCH_PAST_ORDERS = 'FETCH_PAST_ORDERS';
 
 //action ceator
-export const _createNewOrder = (order) => ({
+export const _createNewOrder = order => ({
   type: CREATE_ORDER,
   order,
 });
-export const _fetchPastOrders = (pastOrders) => ({
+export const _fetchPastOrders = pastOrders => ({
   type: FETCH_PAST_ORDERS,
   pastOrders,
 });
 
 //thunk
-export const createNewOrder = (cart) => {
-  return async (dispatch) => {
-    const token = window.localStorage.getItem("token");
+export const createNewOrder = cart => {
+  return async dispatch => {
+    const token = window.localStorage.getItem('token');
     const { data: order } = await axios.post(
-      "/api/orders",
+      '/api/orders',
       { cart },
       {
         headers: {
@@ -32,14 +32,20 @@ export const createNewOrder = (cart) => {
         },
       }
     );
-    console.log("this is cart in thunk", order);
+    console.log('this is cart in thunk', order);
     dispatch(_createNewOrder(order));
   };
 };
 
 export const fetchPastOrders = () => {
-  return async (dispatch) => {
-    const { data: orders } = await axios.get("/api/orders");
+  return async dispatch => {
+    const token = window.localStorage.getItem('token');
+    const { data: orders } = await axios.get('/api/orders', {
+      headers: {
+        authorization: token,
+      },
+    });
+
     dispatch(_fetchPastOrders(orders));
   };
 };
