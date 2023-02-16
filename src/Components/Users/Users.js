@@ -15,7 +15,6 @@ const Users = () => {
 
   const { user } = useSelector(state => state);
   const activeUsers = user.users;
-  console.log(user);
 
   useEffect(() => {
     const filteredUsers = activeUsers.filter(user =>

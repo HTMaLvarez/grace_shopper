@@ -13,8 +13,6 @@ const PastOrders = () => {
     dispatch(fetchPastOrders());
   }, []);
   const { order } = useSelector(state => state);
-  console.log('this is order', order);
-  console.log('this is past orders', order.pastOrders);
 
   return (
     <div className="PastOrders">

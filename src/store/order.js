@@ -32,7 +32,6 @@ export const createNewOrder = cart => {
         },
       }
     );
-    console.log('this is cart in thunk', order);
     dispatch(_createNewOrder(order));
   };
 };

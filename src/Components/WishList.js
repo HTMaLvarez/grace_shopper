@@ -8,7 +8,6 @@ const WishList = () => {
   // enable dispatch
   const dispatch = useDispatch();
   const { wishList } = useSelector(state => state);
-  console.log('this is wish list', wishList.wishlist);
 
   return (
     <div className="Wish">
@@ -17,12 +16,16 @@ const WishList = () => {
         {wishList.wishlist?.length > 0 ? (
           wishList.wishlist.map(product => (
             <div className="WishCard" key={product.id}>
-              <Link to={`/products/${product.id}`}>{product.game}</Link>
+              {/* <Link to={`/products/${product.id}`}>{product.game}</Link> */}
+              {product.game}
             </div>
           ))
         ) : (
           <p>You have no products in your wish list</p>
         )}
+      </div>
+      <div>
+        <Link to="/products">Browse Games</Link>
       </div>
     </div>
   );

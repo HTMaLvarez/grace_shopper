@@ -48,7 +48,7 @@ const App = () => {
   }, []);
 
   // our makeshift version of protected routes - tried the implementation to no avail so that code is commented out below the export statement
-  // what we did is use ternary's to render specific access based on if we're logged in or not. User can view products however will get a 'please create an account... ' if not logged in.
+  // use ternary's to render specific pages based on if we're logged in or not. User can view products however will get a 'please create an account... ' if not logged in.
   // same goes for account access and cart - will not render unless logged in
 
   return (
@@ -100,33 +100,3 @@ const App = () => {
 };
 
 export default App;
-
-// Protected
-{
-  /* <Router>
-        <div className="App">
-          <Header title="VIDEO GAMES" />
-          <Nav />
-          <Routes>
-            PRIVATE
-            <Route exact path="/" element={<PrivateRoute />}>
-              <Route exact path="/" element={<Home />} />
-              <Route exact path="/products" element={<AllProducts />} />
-              <Route exact path="/users/:id" element={<UserDetails />} />
-              <Route path="/cart" element={<Cart />} />
-            </Route>
-            <Route exact path="/sign-in" element={<Login />} />
-            PUBLIC
-            <Route exact path="/" element={<PublicRoute />}>
-              <Route exact path="/products" element={<AllProducts />} />
-              <Route path="/products/:id" element={<ProductDetails />} />
-              <Route exact path="/sign-up" element={<SignUp />} />
-              <Route path="/order-history" element={<PastOrders />} />
-              <Route exact path="/success" element={<Success />} />
-              <Route exact path="/cancel" element={<Cancel />} />
-              <Route path="*" element={<NotFound />} />
-            </Route>
-          </Routes>
-        </div>
-      </Router>  */
-}

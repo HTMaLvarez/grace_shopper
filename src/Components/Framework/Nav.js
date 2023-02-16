@@ -1,12 +1,10 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Modal from './Modal';
 const { checkout } = require('../../stripe');
 // import { checkout } from '../../stripe';
 import { logout, updateCart, fetchUser, createNewOrder } from '../../store';
 import { useSelector, useDispatch } from 'react-redux';
-// const { checkout } = require('../stripe');
 
 const Nav = () => {
   //useSelector to get our auth state
