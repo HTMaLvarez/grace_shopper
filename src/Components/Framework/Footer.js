@@ -11,7 +11,7 @@ const Footer = () => {
   return (
     <footer className="Footer">
       <p>Copyright &copy; {today.getFullYear()}</p>
-      <p>HTMaLverez</p>
+      <p>HTMaLvarez</p>
 
       <p className="SimpleText">
         Cart: ({cartQuantityTotal}) {cartQuantityTotal === 1 ? 'item' : 'items'}

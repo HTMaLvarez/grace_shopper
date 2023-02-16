@@ -17,7 +17,7 @@ const Home = () => {
         <p>You love games don't you? Well you've come to the right place!</p>
         <br></br>
         <p>
-          <strong>HTMaLverez</strong> has cultivated the very finest collection
+          <strong>HTMaLvarez</strong> has cultivated the very finest collection
           of video games. Some old some new, some probably suck, but most don't.
           Please click around our site and enjoy yourself. We can assure you
           that most of our site works like a charm, however if something seems

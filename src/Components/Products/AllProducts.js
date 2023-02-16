@@ -5,13 +5,13 @@ import { useState, useEffect } from 'react';
 
 const AllProducts = () => {
   const { products } = useSelector(state => state);
-  // console.log(products);
 
   // create a 'search' state value
   const [search, setSearch] = useState('');
-  // create a 'searchResults' state value
-  // craete a form within the comp
+
+  // create a form within the comp
   const [searchResults, setSearchResults] = useState([]);
+
   // filter through the products to list the desired...
   useEffect(() => {
     const filteredGames = products.filter(game =>
@@ -24,7 +24,6 @@ const AllProducts = () => {
     <div className="AllProducts">
       <p>All Games</p>
       <div className="ProductCards">
-        {/* <div className="Form"> */}
         <form className="searchForm" onSubmit={e => e.preventDefault()}>
           <label htmlFor="search"></label>
           <input
@@ -35,7 +34,6 @@ const AllProducts = () => {
             onChange={e => setSearch(e.target.value)}
           />
         </form>
-        {/* </div> */}
 
         <ul className="ProductContainer">
           {searchResults.map(product => {

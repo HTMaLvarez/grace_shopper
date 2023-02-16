@@ -7,11 +7,13 @@ import { createNewWish, fetchWishes } from '../../store';
 const ProductDetails = () => {
   // enable dispatch
   const dispatch = useDispatch();
+
   // useParams to grab the product id - which is params.id
   const { id } = useParams();
 
   // set auth var.
   const { auth } = useSelector(state => state);
+
   // set the logged in user's id var
   const userId = auth.id;
 
@@ -19,17 +21,11 @@ const ProductDetails = () => {
   useEffect(() => {
     dispatch(fetchSingleProduct(id));
   }, []);
+
   // desctruct single product from state
   const { singleProduct } = useSelector(state => state);
-  console.log(singleProduct.name);
 
-  // fetch wishlist
-  // useEffect(() => {
-  //   dispatch(fetchWishes());
-  // }, []);
-  // destruct wishlist
   const { wishList } = useSelector(state => state);
-  // console.log(wishList);
 
   // create a quantity state - call 'setQuantity' 'onClick'
   const [quantity, setQuantity] = useState(0);

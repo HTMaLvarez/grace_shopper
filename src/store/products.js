@@ -22,7 +22,6 @@ const fetchProducts = () => {
 };
 
 //Reducer
-
 const products = (state = [], action) => {
   switch (action.type) {
     case FETCH_PRODUCTS:
