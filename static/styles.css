@@ -59,30 +59,36 @@ body {
   /* background-color: #f35d00; */
   background-image: linear-gradient(rgb(149, 149, 149), rgb(56, 56, 56));
   padding: 5px;
+  width: 80px;
   border-radius: 0.25rem;
   margin-right: 5px;
   font-family: 'Orbitron', sans-serif;
 }
+
 .AccountButton button:hover {
-  background-color: #b74600;
+  background-image: linear-gradient(rgb(232, 232, 232), rgb(158, 158, 158));
 }
+
 .AccountButton a {
   text-decoration: none;
   color: white;
 }
+
 .CartButton {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-right: 10px;
 }
 
 .CartButton button {
   background-image: linear-gradient(rgb(58, 58, 58), rgb(0, 0, 0));
-  padding: 5px;
+  width: 80px;
   border-radius: 0.25rem;
   color: white;
+}
+.CartButton button:hover {
+  background-image: linear-gradient(rgb(91, 91, 91), rgb(39, 39, 39));
 }
 
 .Nav ul {
@@ -124,6 +130,18 @@ body {
   border-radius: 0.25rem;
 }
 
+.CreateOrder button {
+  background-color: #00a81f;
+  /* background-image: linear-gradient(grey, rgb(0, 0, 0)); */
+  font-family: 'Orbitron', sans-serif;
+  padding: 2px;
+  margin-left: 5px;
+  border-radius: 0.25rem;
+  color: white;
+  width: 130px;
+  font-size: 10pt;
+}
+
 /*-------------------------HOME--------------------------------*/
 .Users {
   width: 90%;
@@ -160,11 +178,14 @@ body {
 }
 .LogOut button {
   padding: 5px;
-  width: 200px;
+  width: 80px;
   background-image: linear-gradient(rgb(255, 110, 58), rgb(185, 49, 0));
-  border: 1px solid #ddd;
+  border: 1px solid #ff2f00;
   border-radius: 0.25rem;
   color: white;
+}
+.LogOut button:hover {
+  background-image: linear-gradient(rgb(255, 159, 124), rgb(255, 68, 0));
 }
 
 /*-------------------------USERS--------------------------------*/
@@ -263,7 +284,7 @@ body {
 
 .Column {
   flex: 27%;
-  height: 350px;
+  height: 300px;
   padding: 5px;
   margin: 10px;
   text-align: center;
@@ -273,7 +294,7 @@ body {
 }
 .Column:hover {
   flex: 27%;
-  height: 350px;
+  height: 300px;
   padding: 5px;
   margin: 10px;
   text-align: center;
@@ -304,8 +325,8 @@ body {
 
 img {
   padding: 5px;
-  height: 250px;
-  width: 200px;
+  height: 200px;
+  width: 170px;
   margin-top: 20px;
   border-radius: 0.5rem;
 }
@@ -385,7 +406,27 @@ img {
   margin-top: 15px;
   margin-left: 20px;
   margin-right: 20px;
-  /* border: 2pt solid red; */
+}
+.AddCart button {
+  background-image: linear-gradient(rgb(58, 58, 58), rgb(0, 0, 0));
+  width: 100px;
+  height: 30px;
+  border-radius: 0.25rem;
+  color: white;
+  font-family: 'Orbitron', sans-serif;
+}
+.AddCart button:hover {
+  background-image: linear-gradient(rgb(139, 139, 139), rgb(86, 86, 86));
+}
+
+.AddWishCart button {
+  margin-top: 10px;
+  background-color: #000;
+  width: 120px;
+  height: 30px;
+  border-radius: 0.25rem;
+  color: white;
+  font-family: 'Orbitron', sans-serif;
 }
 
 /*-------------------------WISHLIST--------------------------------*/
@@ -449,7 +490,7 @@ img {
 .Cart {
   background-color: rgb(241, 241, 241);
   border-radius: 0.25rem;
-  padding: 10px;
+  padding: 5px;
   width: 100%;
   font-family: 'Orbitron', sans-serif;
   color: rgb(74, 74, 74);
@@ -510,12 +551,18 @@ img {
   font-size: 12pt;
 }
 .Checkout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   margin-top: 10px;
 }
 button.Checkout {
   background-color: #00a81f;
   /* background-image: linear-gradient(grey, rgb(0, 0, 0)); */
   font-family: 'Orbitron', sans-serif;
+  width: 130px;
+  font-size: 10pt;
 }
 
 .On {

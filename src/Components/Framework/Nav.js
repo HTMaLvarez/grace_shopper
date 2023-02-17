@@ -96,10 +96,13 @@ const Nav = () => {
         {auth.id ? (
           <div className="AccountButton">
             <button>
-              <Link to={`/users/${id}`}>ACCOUNT</Link>
+              <Link to={`/users/${id}`}>Account</Link>
             </button>
             <div className="CartButton">
-              <button onClick={toggleActive}>CART</button>
+              <button onClick={toggleActive}>Cart</button>
+            </div>
+            <div className="LogOut">
+              <button onClick={() => dispatch(logout())}>Logout</button>
             </div>
           </div>
         ) : (
@@ -147,7 +150,7 @@ const Nav = () => {
                 Cart Total <strong>{cartSubTotal}</strong>
               </p>
               <button className="Checkout" onClick={checkout}>
-                CHECKOUT
+                Checkout
               </button>
             </div>
           </div>

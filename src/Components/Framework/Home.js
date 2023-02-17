@@ -24,9 +24,7 @@ const Home = () => {
           off, it's probably becasue we didn't finish it.
         </p>
       </div>
-      <div className="LogOut">
-        <button onClick={() => dispatch(logout())}>Logout</button>
-      </div>
+      <hr></hr>
     </div>
   );
 };
