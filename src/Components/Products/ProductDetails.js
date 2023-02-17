@@ -28,12 +28,12 @@ const ProductDetails = () => {
   const { wishList } = useSelector(state => state);
 
   // create a quantity state - call 'setQuantity' 'onClick'
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
 
   // add item - dispatch AddToCart and reset quantity
   const add = () => {
     dispatch(addToCart(singleProduct, quantity));
-    setQuantity(0);
+    setQuantity(1);
   };
 
   const addToWishlist = () => {
@@ -48,16 +48,21 @@ const ProductDetails = () => {
       <img src={`static/${singleProduct.imageURL}`}></img>
 
       {auth.id ? (
-        <div className="ItemQuantity">
-          <form>
-            <button onClick={() => setQuantity(quantity - 1)}> - </button>
-            <input className="Quantity" type="text" placeholder={quantity} />
-            <button onClick={() => setQuantity(quantity + 1)}> + </button>
-          </form>
-
-          <button onClick={add}>Add To Cart</button>
-          <button onClick={addToWishlist}>Add to Wishlist</button>
-        </div>
+        <>
+          <div className="ItemQuantity">
+            <form>
+              <button onClick={() => setQuantity(quantity - 1)}> - </button>
+              <input className="Quantity" type="text" placeholder={quantity} />
+              <button onClick={() => setQuantity(quantity + 1)}> + </button>
+            </form>
+          </div>
+          <div className="AddCart">
+            <button onClick={add}>Add To Cart</button>
+          </div>
+          <div className="AddWishCart">
+            <button onClick={addToWishlist}>Add to Wishlist</button>
+          </div>
+        </>
       ) : (
         <div className="CreateAccount">
           <br></br>
