@@ -147,7 +147,7 @@ const Nav = () => {
             </div>
             <div className="ModalFooter">
               <p>
-                Cart Total <strong>{cartSubTotal}</strong>
+                Cart Total $<strong>{cartSubTotal}</strong>
               </p>
               <button className="Checkout" onClick={checkout}>
                 Checkout
