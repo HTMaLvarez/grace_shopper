@@ -9,6 +9,7 @@ import { useSelector, useDispatch } from 'react-redux';
 const Nav = () => {
   //useSelector to get our auth state
   const { auth } = useSelector(state => state);
+  const dispatch = useDispatch();
 
   // create an active state for modal
   const [isActive, setActive] = useState('true');
@@ -16,12 +17,12 @@ const Nav = () => {
   // set cart var.
   const { cart } = useSelector(state => state);
 
-  // cart price total
+  // // cart price total
   const cartSubTotal = cart.lineItems.reduce((acc, curr) => {
     return acc + curr.product.price * curr.quantity;
   }, 0);
 
-  // cart quantity total
+  // // cart quantity total
   const cartQuantityTotal = cart.lineItems.reduce((acc, curr) => {
     return acc + curr.quantity;
   }, 0);
@@ -30,7 +31,6 @@ const Nav = () => {
   const id = auth.id;
 
   // allow dispatch from store/thunk
-  const dispatch = useDispatch();
 
   // active toggle to display model
   const toggleActive = () => {

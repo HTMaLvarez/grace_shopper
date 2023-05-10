@@ -53,24 +53,24 @@ const User = conn.define(
         );
         console.log(newUser.password);
       },
-      async beforeUpdate(user) {
-        console.log(user);
-        console.log('-----------');
-        const updatedUser = user.dataValues;
-        console.log(updatedUser);
-        updatedUser.password = await bcrypt.hash(
-          updatedUser.password,
-          8
-          // parseInt(process.env.ROUNDS) || 8
-        );
-        console.log(
-          await bcrypt.compareSync(
-            user.dataValues.password,
-            updatedUser.password
-          )
-        );
-        console.log(updatedUser.password);
-      },
+      // async beforeUpdate(user) {
+      //   console.log(user);
+      //   console.log('-----------');
+      //   const updatedUser = user.dataValues;
+      //   console.log(updatedUser);
+      //   updatedUser.password = await bcrypt.hash(
+      //     updatedUser.password,
+      //     8
+      //     // parseInt(process.env.ROUNDS) || 8
+      //   );
+      //   console.log(
+      //     await bcrypt.compareSync(
+      //       user.dataValues.password,
+      //       updatedUser.password
+      //     )
+      //   );
+      //   console.log(updatedUser.password);
+      // },
     },
   }
 );
